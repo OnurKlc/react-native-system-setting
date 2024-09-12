@@ -4,6 +4,14 @@ import Utils from './Utils'
 
 const SystemSettingNative = NativeModules.SystemSetting
 
+SystemSettingNative.removeListeners = () => {
+    // This is a placeholder implementation
+}
+
+SystemSettingNative.addListener = () => {
+    // This is a placeholder implementation
+}
+
 const SCREEN_BRIGHTNESS_MODE_UNKNOW = -1
 const SCREEN_BRIGHTNESS_MODE_MANUAL = 0
 const SCREEN_BRIGHTNESS_MODE_AUTOMATIC = 1
@@ -207,12 +215,12 @@ export default class SystemSetting {
                 if (supported) await Linking.openURL(settingsLink);
                 break;
             }
-            case 'android': 
+            case 'android':
                 await SystemSettingNative.openAppSystemSettings()
                 break;
             default:
                 throw new Error('unknown platform')
-                break;    
+                break;
         }
     }
 
